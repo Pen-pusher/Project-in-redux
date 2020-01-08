@@ -1,8 +1,10 @@
-import {createStore,combineReducers} from 'redux'
-import inputReducer from './reducers/inputReducer.js'
-import mainReducer from './reducers/mainReducer.js'
-const store=createStore(combineReducers({
-  input:inputReducer,
-  main:mainReducer
-}))
-export default store
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+import mainReducer from './reducers/mainReducer';
+
+export default function configureStore(initialState={}) {
+    return createStore(
+        mainReducer,
+        applyMiddleware(thunk)
+    );
+}

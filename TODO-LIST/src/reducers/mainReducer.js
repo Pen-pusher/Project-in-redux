@@ -1,10 +1,5 @@
-const mainReducer = (state=[],action)=>{
-  if(action.type==='ADD_INPUT'){
-    return state=[...state,action.value]
-  }
-  if(action.type==='REMOVE_INPUT'){
-    return state.filter(el=>el.id!==action.id)
-  }
-  return state
-}
-export default mainReducer
+import { combineReducers } from 'redux';
+import tasksReducer  from './tasksReducer';
+export default combineReducers({
+    tasksReducer
+});
